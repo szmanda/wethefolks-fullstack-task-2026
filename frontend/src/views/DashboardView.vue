@@ -96,32 +96,18 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.dashboard-shell {
-  display: grid;
-  gap: 20px;
-}
-
-.page-heading h1 {
-  margin: 0 0 6px;
-  font-size: 2rem;
-}
-
-.page-heading p {
-  margin: 0;
-  color: #475569;
-}
 
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 .summary-card,
 .table-card,
 .status-card {
-  background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e2e8f033;
   border-radius: 16px;
   padding: 18px;
   box-shadow: 0 10px 20px rgba(15, 23, 42, 0.04);
@@ -134,12 +120,7 @@ onMounted(async () => {
 }
 
 .summary-label {
-  color: #64748b;
   font-size: 0.95rem;
-}
-
-.table-card h2 {
-  margin-top: 0;
 }
 
 table {
@@ -151,7 +132,7 @@ th,
 td {
   text-align: left;
   padding: 10px 8px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f033;
 }
 
 .error {

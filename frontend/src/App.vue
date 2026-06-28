@@ -38,7 +38,7 @@
 }
 
 .nav-links a {
-  color: #334155;
+  color: #808080;
   font-weight: 600;
 }
 

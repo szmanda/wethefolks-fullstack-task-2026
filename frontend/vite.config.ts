@@ -6,7 +6,14 @@ export default () => {
     server: {
       host: '0.0.0.0',
       port: 3000,
-      strictPort: true
+      strictPort: true,
+      proxy: {
+      '/api': {
+        target: 'https://nginx',
+        changeOrigin: true,
+        secure: false,
+      },
+      },
     },
     build: {
       outDir: "./public",

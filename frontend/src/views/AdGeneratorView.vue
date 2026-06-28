@@ -52,12 +52,33 @@ async function submitForm() {
   formData.append('image', form.image)
 
   try {
+    const tokenResponse = await fetch('/api/csrf-token', {
+      credentials: 'same-origin',
+    })
+
+    if (!tokenResponse.ok) {
+      throw new Error('Unable to fetch CSRF token.')
+    }
+
+    const tokenPayload = await tokenResponse.json().catch(() => null)
+    const csrfToken = tokenPayload?.csrf_token
+
+    if (!csrfToken) {
+      throw new Error('CSRF token missing from response.')
+    }
+
     const response = await fetch('/api/ads', {
       method: 'POST',
       body: formData,
+      credentials: 'same-origin',
+      headers: {
+        'X-CSRF-TOKEN': csrfToken,
+        'X-XSRF-TOKEN': csrfToken,
+      },
     })
 
     if (!response.ok) {
+      console.log(response)
       const payload = await response.json().catch(() => null)
       if (payload?.errors) {
         Object.assign(errors, payload.errors)
